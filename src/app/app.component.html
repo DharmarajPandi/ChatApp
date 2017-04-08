@@ -1,0 +1,69 @@
+  <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" *ngIf='name' (click)="logOut()" class="navbar-toggle" data-toggle="collapse" >
+                    <span class="sr-only">Toggle navigation</span> LogOut <i class="fa fa-bars"></i>
+                  </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Welcome Buddy!!!</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div   class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                   <li>
+                        <a class="page-scroll" href="#" *ngIf='name' (click)="logOut()">LogOut</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome To Our Site!</div>
+                <div class="intro-heading">Click here to LogIn</div>
+                
+                <button (click)="logIn()" id='mYbtn' *ngIf="!name" class="page-scroll btn btn-xl">Sign in with Google</button>
+            </div>
+        </div>
+    </header>
+
+<div *ngIf='name' class="chat_window">
+        <div class="top_menu">
+            <div class="buttons">
+                <div class="button close"></div>
+                <div class="button minimize"></div>
+                <div class="button maximize"></div>
+            </div>
+             <div class="title">Bienvenido!!</div>
+         </div>
+      <ul class="messages" >
+       <li class="message left appeared" *ngFor='let item of items | async'>
+         <div class="avatar"><img src={{item.picUrl}} class="img-circle" alt="Cinque Terre"/></div>
+         <div class="text_wrapper"><div class="text"><a class='aCust'>{{item.name}}</a></div>
+         <div class="text" class='txtCust'>{{item.messages}}</div></div></li>
+      </ul>
+    <div class="bottom_wrapper clearfix">
+      <div class="message_input_wrapper">
+          <input class="message_input col-md-12" type="text" id="message1" placeholder="Type your text here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+       </div>
+     </div>
+</div>
+
+   
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://blackrockdigital.github.io/startbootstrap-agency/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    
